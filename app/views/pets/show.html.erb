@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @pet.race %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @pet.birthday %>
+</p>
+
+<p>
+  <strong>Average weight:</strong>
+  <%= @pet.weight_avg.round(2) %>
+</p>
+
+<p>
+  <strong>Max. weight:</strong>
+  <%= @pet.weight_max %>
+</p>
+
+<p>
+  <strong>Average height:</strong>
+  <%= @pet.height_avg.round(2) %>
+</p>
+
+<p>
+  <strong>Max height:</strong>
+  <%= @pet.height_max %>
+</p>
+
+<p>
+  <strong>History:</strong>
+  <table>
+    <thead>
+      <th>#</th>
+      <th>Date</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </thead>
+    <tbody>
+      <% @pet.pet_histories.each do |ph| %>
+        <tr>
+          <td><%= ph.id %></td>
+          <td><%= ph.created_at %></td>
+          <td><%= ph.weight  %></td>
+          <td><%= ph.height %></td>
+          <td><%= ph.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>
