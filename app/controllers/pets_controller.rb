@@ -1,10 +1,11 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :get_clients, only: [:new, :edit]
 
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.includes(:pet_histories).all
+    @pets = Pet.includes(:pet_histories, :client).all
   end
 
   # GET /pets/1
@@ -62,6 +63,11 @@ class PetsController < ApplicationController
   end
 
   private
+    # get all clients from DB
+    def get_clients
+      @clients = Client.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_pet
       @pet = Pet.find(params[:id])
@@ -69,6 +75,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:name, :race, :birthday)
+      params.require(:pet).permit(:name, :race, :birthday, :client_id)
     end
 end

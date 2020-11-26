@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Pets:</strong>
+</p>
+
+<table>
+  <thead>
+    <th>#</th>
+    <th>Name</th>
+    <th>Height</th>
+    <th>Weight</th>
+    <th># Visits</th>
+    <th colspan="3"></th>
+  </thead>
+  <tbody>
+    <% @client.pets.includes(:pet_histories).each do |pet| %>
+      <tr>
+        <td><%= pet.id %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.height_max %></td>
+        <td><%= pet.weight_max %></td>
+        <td><%= pet.pet_histories.length %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

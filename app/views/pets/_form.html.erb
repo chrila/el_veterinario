@@ -26,6 +26,11 @@
     <%= form.date_select :birthday %>
   </div>
 
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, @clients, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
