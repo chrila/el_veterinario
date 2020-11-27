@@ -1,6 +1,6 @@
 class PetHistoriesController < ApplicationController
   before_action :set_pet_history, only: [:show, :edit, :update, :destroy]
-  before_action :get_pets, only: [:net, :edit]
+  before_action :get_pets, only: [:new, :edit]
 
   # GET /pet_histories
   # GET /pet_histories.json

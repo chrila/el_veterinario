@@ -7,18 +7,18 @@ class Pet < ApplicationRecord
   end
 
   def weight_avg
-    pet_histories.map(&:weight).sum / pet_histories.length
+    pet_histories.nil? ? 0 : pet_histories.map(&:weight).sum / pet_histories.length
   end
 
   def height_avg
-    pet_histories.map(&:height).sum / pet_histories.length
+    pet_histories.nil? ? 0 : pet_histories.map(&:height).sum / pet_histories.length
   end
 
   def weight_max
-    pet_histories.map(&:weight).max
+    pet_histories.nil? ? 0 : pet_histories.map(&:weight).max
   end
 
   def height_max
-    pet_histories.map(&:height).max
+    pet_histories.nil? ? 0 : pet_histories.map(&:height).max
   end
 end

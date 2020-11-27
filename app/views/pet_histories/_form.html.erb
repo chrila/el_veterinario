@@ -28,6 +28,7 @@
 
   <div class="field">
     <%= form.label :pet_id %>
+    <% byebug %>
     <%= form.collection_select :pet_id, @pets, :id, :name %>
   </div>
 
